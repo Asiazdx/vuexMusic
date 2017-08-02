@@ -1,6 +1,6 @@
 <template>
     <div class="header">
-        <div class="header-icon" @click="showSidebar"><i class="icon">&#xe73d;</i></div>
+        <div class="header-icon" @click="showSidebar"><i class="icon">&#xe692;</i></div>
         <div class="header-cont">
             <div class="nav-item">
                 <router-link to="/home/popular">热门</router-link>
@@ -14,7 +14,7 @@
         </div>
         <div class="header-icon">
             <router-link to="/search">
-                <i class="icon">&#xe60a;</i>
+                <i class="icon">&#xe638;</i>
             </router-link>
         </div>
     </div>
@@ -40,6 +40,9 @@ export default {
 @import '../assets/css/function';
 .header {
     height: px2rem(100px);
+    position:"absolute";
+    top:0;
+    left:0;
     line-height: px2rem(100px);
     text-align: center;
     background: #D4303B;

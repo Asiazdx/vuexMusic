@@ -9,23 +9,23 @@
 			</router-link>
 		</div>
 		<div class="nav-item">
-			<router-link to=''>
+			<router-link to='classical'>
 				<div class="icon">
-					<i class="icon">&#xe62f;</i>
+					<i class="icon">&#xe635;</i>
 				</div>
 				<span>古典</span>
 			</router-link>
 		</div>
 		<div class="nav-item">
-			<router-link to=''>
+			<router-link to='light'>
 				<div class="icon">
-					<i class="icon">&#xe62f;</i>
+					<i class="icon">&#xe632;</i>
 				</div>
 				<span>纯音乐</span>
 			</router-link>
 		</div>
 		<div class="nav-item">
-            <router-link to=''>
+            <router-link to='radio'>
                 <div class="icon"><i class="icon">&#xe634;</i></div>
                 <span>电台</span>
             </router-link>

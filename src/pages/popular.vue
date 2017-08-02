@@ -1,6 +1,7 @@
 <template>
-	<v-music-list :music-lists="popularLists"></v-music-list>
+	<v-music-list :music-lists=popularLists></v-music-list>
 </template>
+
 <script>
 import musicList from '@/components/musicList'
 import {mapGetters} from 'vuex'

@@ -1,55 +1,78 @@
 import api from '../../api'
 import * as types from '../types'
-
 const state={
 	popularLists:[],
 	classicalLists:[],
 	lightLists:[],
 	radioLists:[],
-	listenLists:localStorage.musiclists? JSON.parse(localStorage.musiclist): [
-		{
-			"name":"刚好遇见你",
-			"id": 439915614,
-			"ar": [
-                {
-                    "id": 4130,
-                    "name": "李玉刚",
-                }
-            ],
-            "al": {
-                "name": "刚好遇见你",
-                "picUrl": "http://p3.music.126.net/lDyytkTaPYVTb1Vpide6AA==/18591642115187138.jpg",
-            },
+	listenLists:localStorage.musiclists?JSON.stringify(localStorage.musiclists):[
+		{ 
+			"id":17001,
+			"name":"追光者",
+			"ar":"岑宁儿",
+			"picUrl":"../../static/img/pop01.jpg",
+			"audioUrl":"../../static/audio/pop01.mp3"
 		},
-		 {
-            "name": "暧昧",
-            "id": 471385043,
-            "ar": [
-                {
-                    "id": 5781,
-                    "name": "薛之谦",
-                }
-            ],
-            "al": {
-                "name": "暧昧",
-                "picUrl": "http://p4.music.126.net/ap8OhyOkOPOz5M1A7VhgAA==/18822539557778052.jpg",
-            }
-        }
+		{
+	  		"id":17002,
+	  		"name":"Numb",
+	  		"ar":"LinkPark",
+	  		"picUrl":"../../static/img/pop02.jpg",
+	  		"audioUrl":"../../static/aduio/pop02.mp3",
+		}
 	],
-	audio: localStorage.musiclists?JSON.parse(localStorage.musiclists).slice(0,1):[{
-		"name": "暧昧",
-        "id": 471385043,
-        "ar": [
-            {
-                "id": 5781,
-                "name": "薛之谦",
-            }
-        ],
-        "al": {
-            "name": "暧昧",
-            "picUrl": "http://p4.music.126.net/ap8OhyOkOPOz5M1A7VhgAA==/18822539557778052.jpg",
-        }
-	}],
+	audio:localStorage.musiclists?JSON.stringify(localStorage.musiclists).slice(0,1):[
+		{ 
+			"id":17001,
+			"name":"追光者",
+			"ar":"岑宁儿",
+			"picUrl":"../../static/img/pop01.jpg",
+			"audioUrl":"../../static/aduio/pop01.mp3"
+		},
+		{
+	  		"id":17002,
+	  		"name":"Numb",
+	  		"ar":"LinkPark",
+	  		"picUrl":"../../static/img/pop02.jpg",
+	  		"audioUrl":"../../static/audio/pop02.mp3"
+	    },
+	    {
+	      "id":17003,
+	      "name":"再也没有",
+	      "ar":"Ryan.B",
+	      "picUrl":"../../static/img/pop03.jpg",
+	      "audioUrl":"../../static/audio/pop03.mp3"
+		},
+		{
+	      "id":17004,
+	      "name":"越过山丘",
+	      "ar":"杨宗纬",
+	      "picUrl":"../../static/img/pop04.jpg",
+	      "audioUrl":"../../static/audio/pop04.mp3"
+		},
+	    {
+	      "id":17005,
+	      "name":"童话镇",
+	      "ar":"陈一发儿",
+	      "picUrl":"../../static/img/pop05.jpg",
+	      "audioUrl":"../../static/audio/pop05.mp3"
+	    },
+	    {
+	      "id":17006,
+	      "name":"成都",
+	      "ar":"赵雷",
+	      "picUrl":"../../static/img/pop06.jpg",
+	      "audioUrl":"../../static/audio/pop06.mp3"
+	    },
+	    {
+	    	"id":17007,
+	    	"name":"昨夜小楼又东风",
+	    	"ar":"西宇",
+	    	"picUrl":"../../static/img/pop07.jpg",
+	    	"audioUrl":"../../static/audio/pop07.mp3"
+	    }
+
+	],
 	audioUrl:'',
 	lyric:'',
 	size:'',
@@ -70,23 +93,68 @@ const actions={
 	},
 	//获取热门音乐
 	getPopularLists({commit}){
-		commit(types.COM_SHOW_LOADING,true)
-		if(localStorage.popularLists!=='[]'&& localStorage.popularmusics){
+		if(localStorage.popularmusics!=='[]'&&localStorage.popularmusics){
 			setTimeout(()=>{
-				commit(types.COM_SHOW_LOADING,false)
-				commit(types.GET_POPULAR_LISTS,JSON.parse(localStroage.popularmusics))
+				commit(types.COM_SHOW_LOADING,false);
+				commit(types.GET_POPULAR_LISTS,JSON.parse(localStorage.popularmusics));
 			},500)
 			return;
 		}
-		api.PopularList().then(res=>{
-			commit(types.COM_SHOW_LOADING,false)
-			commit(types.GET_POPULAR_LISTS,res.playlist.tracks)
-			localStorage.popularmusics=JSON.stringify(res.playlist.tracks.slice(0,30))
-		})
+		localStorage.popularmusics=JSON.stringify([
+			{ 
+				"id":17001,
+				"name":"追光者",
+				"ar":"岑宁儿",
+				"picUrl":"../../static/img/pop01.jpg",
+				"audioUrl":"../../static/audio/pop01.mp3"
+			},
+			{
+	      		"id":17002,
+	      		"name":"Numb",
+	      		"ar":"LinkPark",
+	      		"picUrl":"../../static/img/pop02.jpg",
+	      		"audioUrl":"../../static/audio/pop02.mp3"
+	    	},
+		    {
+		      "id":17003,
+		      "name":"再也没有",
+		      "ar":"Ryan.B",
+		      "picUrl":"../../static/img/pop03.jpg",
+		      "audioUrl":"../../static/audio/pop03.mp3"
+		    },
+		    {
+		      "id":17004,
+		      "name":"越过山丘",
+		      "ar":"杨宗纬",
+		      "picUrl":"../../static/img/pop04.jpg",
+		      "audioUrl":"../../static/audio/pop04.mp3"
+		    },
+		    {
+		      "id":17005,
+		      "name":"童话镇",
+		      "ar":"陈一发儿",
+		      "picUrl":"../../static/img/pop05.jpg",
+		      "audioUrl":"../../static/audio/pop05.mp3"
+		    },
+		    {
+		      "id":17006,
+		      "name":"成都",
+		      "ar":"赵雷",
+		      "picUrl":"../../static/img/pop06.jpg",
+		      "audioUrl":"../../static/audio/pop06.mp3"
+		    },
+		    {
+		    	"id":17007,
+		    	"name":"昨夜小楼又东风",
+		    	"ar":"西宇",
+		    	"picUrl":"../../static/img/pop07.jpg",
+		    	"audioUrl":"../../static/audio/pop07.mp3"
+		    }
+	])
+
 	},
 	//获取古典歌曲
 	getClassicalLists({commit}){
-		commit(types.COM_SHOW_LOADING,true)
 		if(localStorage.classicalmusics!=='[]'&&localStorage.classicalmusics){
 			setTimeout(()=>{
 				commit(types.COM_SHOW_LOADING,false)
@@ -94,12 +162,57 @@ const actions={
 			},500)
 			return;
 		}
-		api.ClassicalList()
-			.then(res=>{
-				commit(types.COM_SHOW_LOADING,false)
-				commit(types.GET_CLASSICAL_LISTS,res.playlist.tracks)
-				localStorage.classicalmusics=JSON.stringify(res.playlist.tracks.slice(0,30))
-			})
+		localStorage.classicalmusics=JSON.stringify([
+			{
+				"id":17101,
+				"name":"三国恋",
+				"ar":"尚雯婕",
+				"picUrl":"/static/img/cal01.png",
+				"audioUrl":"/static/audio/cal01.mp3",
+			},
+			{
+				"id":17102,
+				"name":"勋章",
+				"ar":"鹿晗",
+				"picUrl":"/static/img/cal02.jpg",
+				"audioUrl":"/static/audio/cal02.mp3",
+			},
+			{
+				"id":17103,
+				"name":"下个路口见",
+				"ar":"李宇春",
+				"picUrl":"/static/img/cal03.jpg",
+				"audioUrl":"/static/audio/cal03.mp3",
+			},
+			{
+				"id":17104,
+				"name":"她来听我的演唱会",
+				"ar":"张学友",
+				"picUrl":"/static/img/cal04.jpg",
+				"audioUrl":"/static/audio/cal04.mp3",
+			},
+			{
+				"id":17105,
+				"name":"凉凉",
+				"ar":"张碧晨",
+				"picUrl":"/static/img/cal05.jpg",
+				"audioUrl":"/static/audio/cal05.mp3",
+			},
+			{
+				"id":17106,
+				"name":"隐形的翅膀",
+				"ar":"张韶涵",
+				"picUrl":"/static/img/cal06.png",
+				"audioUrl":"/static/audio/cal06.mp3",
+			},
+			{
+				"id":17107,
+				"name":"年轮",
+				"ar":"张碧晨",
+				"picUrl":"/static/img/cal07.jpg",
+				"audioUrl":"/static/audio/cal07.mp3",
+			}
+		])
 	},
 	//获取轻音乐歌曲
 	getLightLists({commit}){
@@ -111,12 +224,50 @@ const actions={
 			},500)
 			return;
 		}
-		api.LightList()
-			.then(res=>{
-				commit(types.COM_SHOW_LOADING,false)
-				commit(types.GET_LIGHT_LISTS,res.playlist.tracks)
-				localStorage.lightmusics=JSON.stringify(res.playlist.tracks.slice(0,30))
-			})
+		localStorage.lightmusics=JSON.stringify([
+			{
+				"id":17201,
+				"name":"告白气球",
+				"ar":"周杰伦",
+				"picUrl":"/static/img/lt01.jpg",
+			},
+			{
+				"id":17202,
+				"name":"刚刚好",
+				"ar":"薛之谦",
+				"picUrl":"/static/img/lt02.jpg",
+			},
+			{
+				"id":17203,
+				"name":"遗憾",
+				"ar":"赵天宇",
+				"picUrl":"/static/img/lt03.jpg",
+			},
+			{
+				"id":17204,
+				"name":"消愁",
+				"ar":"毛不易",
+				"picUrl":"/static/img/lt04.jpg",
+			},
+			{
+				"id":17205,
+				"name":"她说",
+				"ar":"张碧晨",
+				"picUrl":"/static/img/cal06.png",
+			},
+			{
+				"id":17206,
+				"name":"刚好遇见你",
+				"ar":"李玉刚",
+				"picUrl":"/static/img/lt06.jpg",
+			},
+			{
+				"id":17207,
+				"name":"借过",
+				"ar":"印子月",
+				"picUrl":"/static/img/lt07.jpg",
+			}
+		])
 	},
 	//获取电台歌曲
 	getRadioLists({commit}){
@@ -128,12 +279,50 @@ const actions={
 			},500)
 			return;
 		}
-		api.RadioList()
-			.then(res=>{
-				commit(types.COM_SHOW_LOADING,false)
-				commit(types.GET_RADIO_LISTS,res.playlist.tracks)
-				localStorage.radiomusics=JSON.stringify(res.playlist.tracks.slice(0,30))
-			})
+		localStorage.radiomusics=JSON.stringify([
+			{
+				"id":17301,
+				"name":"逆流成河",
+				"ar":"金南岭",
+				"picUrl":"/static/img/ra01.jpg",
+			},
+			{
+				"id":17302,
+				"name":"小巷",
+				"ar":"方雨晨",
+				"picUrl":"/static/img/ra02.jpg",
+			},
+			{
+				"id":17303,
+				"name":"爱河",
+				"ar":"神马天团",
+				"picUrl":"/static/img/ra03.jpg",
+			},
+			{
+				"id":17304,
+				"name":"小苹果",
+				"ar":"筷子兄弟",
+				"picUrl":"/static/img/ra04.jpg",
+			},
+			{
+				"id":17305,
+				"name":"今宵醉酒何处",
+				"ar":"周传雄",
+				"picUrl":"/static/img/ra05.jpg",
+			},
+			{
+				"id":17306,
+				"name":"断桥残雪",
+				"ar":"许嵩",
+				"picUrl":"/static/img/ra06.jpg",
+			},
+			{
+				"id":17307,
+				"name":"贝加尔湖畔",
+				"ar":"李建",
+				"picUrl":"/static/img/ra07.jpg",
+			}
+		])
 	},
 	//设置此时播放的音乐
 	setAudio({commit},music){
@@ -174,11 +363,11 @@ const actions={
 }
 const getters={
 	listenLists:state=>state.listenLists,
-	popularLists:state=>state.popularLists.slice(0,30),
-	radioLists:state=>state.radioLists.slice(0,30),
-	listenLists:state=>state.radioLists.slice(0,30),
-	lightLists:state=>state.listenLists.slice(0,30),
-	classicalLists:state=>state.classicalLists.slice(0,30),
+	popularLists:state=>state.popularLists.slice(0,20),
+	radioLists:state=>state.radioLists.slice(0,20),
+	listenLists:state=>state.radioLists.slice(0,20),
+	lightLists:state=>state.lightLists.slice(0,20),
+	classicalLists:state=>state.classicalLists.slice(0,20),
 	audio:state=>state.audio,
 	audioUrl:state=>state.audioUrl,
 	playing:state=>state.playing,

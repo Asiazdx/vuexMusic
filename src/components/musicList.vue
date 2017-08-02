@@ -1,48 +1,28 @@
 <template>
     <div class="music-list">
-        <div class="list-item"
-             v-for="(item, index) in musicLists" v-show="!showLoading">
-            <div class="avatar"
-                 @click="_play(item)">
-                <img v-if="item.al" v-lazy="item.al.picUrl"
-                     alt="">
-                <img v-else
-                     v-lazy="item.album.picUrl"
-                     alt="">
+        <div class="list-item" v-for="(item, index) in musicLists">
+            <div class="avatar"@click="_play(item)">
+                <img v-lazy="item.picUrl" src="item.picUrl" alt="">
             </div>
-            <div class="info"
-                 @click="_play(item)">
-                <div class="music-name">{{item.name}}<i class="tag"
-                       v-show="item.sq">SQ</i></div>
-                <div class="music-s"
-                     v-if="item.ar">{{item.ar[0].name}}</div>
-                <div class="music-s"
-                     v-else>{{item.artists[0].name}}</div>
-                <div class="music-hot"
-                     v-show="item.hot"><i class="icon">&#xe650;</i>{{item.hot}}</div>
+            <div class="info" @click="_play(item)">
+                <div class="music-name">{{item.name}}</div>
+                <div class="music-s">{{item.ar}}</div>
             </div>
-            <div class="operation"
-                 @click="_showOperation(index)"><i class="icon">&#xe605;</i></div>
-            <animation-menu :item="item"
-                            :index="index"></animation-menu>
+            <div class="operation" @click="_showOperation(index)"><i class="icon">&#xe605;</i></div>
+            <animation-menu :item="item" :index="index"></animation-menu>
         </div>
-        <v-loading v-show="showLoading"></v-loading>
     </div>
 </template>
 
 <script>
 import animationMenu from '@/components/animationMenu'
-import VLoading from '@/components/loading'
 
 import Vue from 'vue'
 import { mapGetters } from 'vuex'
 
-import api from '../api'
-
 export default {
     components: {
         animationMenu,
-        VLoading
     },
     props: {
         musicLists: Array
@@ -54,7 +34,6 @@ export default {
     computed: {
         ...mapGetters([
             'listenLists',
-            'showLoading',
         ])
     },
     methods: {
@@ -105,12 +84,12 @@ export default {
 <style lang="scss" scoped>
 @import '../assets/css/function.scss';
 .music-list {
-    background: #28224e;
+    background: #fff;
     position: relative;
     .list-item {
         position: relative;
         height: px2rem(145px);
-        border-bottom: 1px solid #3c3662;
+        border-bottom: 1px solid #ECECEC;
         display: flex;
         align-items: center;
         cursor: pointer;
@@ -134,12 +113,13 @@ export default {
                 overflow:hidden;
                 text-overflow:ellipsis;
             .music-name {
+                color:#333;
                 font-size: px2rem(32px);
                 font-weight: bold;
                 vertical-align: middle; 
                 .tag {
-                    font-size: px2rem(20px);
-                    color: #e53f6f;
+                    font-size: px2rem(22px);
+                    color: #666;
                     line-height: px2rem(20px);
                     border: 1px solid #e53f6f;
                     border-radius: px2rem(20px);
@@ -150,24 +130,30 @@ export default {
             }
             .music-s {
                 font-size: px2rem(24px);
-                color: #777686;
+                color: #666;
                 line-height: px2rem(40px);
+                margin-top:px2rem(10px);
             }
             .music-hot {
                 .icon {
                     font-size: px2rem(25px);
                     display: inline-block;
                     margin-right: px2rem(5px);
-                    color: #e53f6f;
+                    color: #666;
                 }
             }
         }
         .operation {
             width: px2rem(100px);
+            color:#333;
             height: 100%;
             line-height: px2rem(145px);
             text-align: center;
+            .icon{
+                color:#333;
+            }
         }
+        
     }
 }
 

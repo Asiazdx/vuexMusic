@@ -34,25 +34,7 @@ export default {
             _.toast('开发中，敬请期待...')
         },
         _add(index) {
-            let x = this.listenLists.findIndex((music) => {
-                if(this.item.ar) {
-                    return music.name == this.item.name && music.ar[0].name == this.item.ar[0].name
-                } else {
-                    if (music.ar) {
-                        return music.name == this.item.name && music.ar[0].name == this.item.artists[0].name
-                    } else {
-                        return music.name == this.item.name && music.artists[0].name == this.item.artists[0].name
-                    }
-                }
-            })
-            if(x !== -1) {
-                _.toast('试听列表中已存在')
-                Vue.set(this.item, 'menuShow', false)
-            } else {
-                _.toast('已添加到试听列表')
-                this.$store.dispatch('addListenLists', this.item)
-                Vue.set(this.item, 'menuShow', false)
-            }
+            _.toast('开发中，敬请期待');
         },
         _share(index) {
             _.toast('开发中，敬请期待...')
@@ -109,9 +91,9 @@ export default {
         height: px2rem(60px);
         line-height: px2rem(62px);
         border-radius: 50%;
-        background: rgba(255, 255, 255, .1);
+        background: rgba(0, 0, 0, .5);
         text-align: center;
-        color: #fff;
+        color: #000;
         cursor: pointer;
         transition: all .4s;
     }

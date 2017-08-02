@@ -11,31 +11,31 @@
 				<ul>
 					<li @click="showToast">
 						<router-link to="">
-							<i class="icon">&#xe603;</i>
+							<i class="icon">&#xe63c;</i>
 							<span>个人中心</span>
 						</router-link>
 					</li>
 					<li @click="showToast">
 						<router-link to="">
-							<i class="icon">&#xe6ee;</i>
+							<i class="icon">&#xe631;</i>
 							<span>音效调整</span>
 						</router-link>
 					</li>
 					<li @click="showToast">
 						<router-link to="">
-							<i class="icon">&#xe624;</i>
+							<i class="icon">&#xe65b;</i>
 							<span>听歌识曲</span>
 						</router-link>
 					</li>
 					<li @click="showToast">
 						<router-link to="">
-							<i class="icon">&#xe640;</i>
+							<i class="icon">&#xe600;</i>
 							<span>帮助</span>
 						</router-link>
 					</li>
 					<li @click="showToast">
 						<router-link to="">
-							<i class="icon">&#xe640;</i>
+							<i class="icon">&#xe61f;</i>
 							<span>设置</span>
 						</router-link>
 					</li>
@@ -124,7 +124,7 @@
 						}
 						span {
 							vertical-align: middle;
-							font-size: px2rem(24px);
+							font-size: px2rem(36px);
 							padding-left: px2rem(20px);
 							color: #fff;
 						}

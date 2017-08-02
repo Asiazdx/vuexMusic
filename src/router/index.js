@@ -1,8 +1,11 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import home from '@/pages/home'
-import popular from '@/pages/popular'
 import collection from '@/pages/collection'
+import popular from '@/pages/popular'
+import classical from '@/pages/classical'
+import light from '@/pages/light'
+import radio from '@/pages/radio'
 import user from '@/pages/user'
 
 
@@ -20,6 +23,18 @@ export default new Router({
         {
           path: 'popular',
           component: popular
+        },
+        {
+          path:'classical',
+          component:classical,
+        },
+        {
+          path:'light',
+          component:light,
+        },
+        {
+          path:'radio',
+          component:radio,
         }
       ]
     },

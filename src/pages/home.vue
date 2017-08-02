@@ -34,3 +34,9 @@
 		}
 	}
 </script>
+<style lang="scss" scoped>
+	.home{
+		height:100%;
+		background:#fff;
+	}
+</style>

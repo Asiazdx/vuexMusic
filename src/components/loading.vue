@@ -1,16 +1,17 @@
 <template>
-	<div class="loader">
-
-	</div>
+    <div class="loader">
+    </div>
 </template>
+
 <style lang="scss" scoped>
-	.loader {
+.loader {
     position: relative;
     width: 5.5em;
     height: 5.5em;
     transform: rotate(165deg);
 }
-loader:before,
+
+.loader:before,
 .loader:after {
     content: '';
     position: absolute;
@@ -30,6 +31,7 @@ loader:before,
 .loader:after {
     animation: after 2s infinite;
 }
+
 @keyframes before {
     0% {
         width: 0.5em;

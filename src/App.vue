@@ -6,9 +6,13 @@
 				<router-view></router-view>
 			</transition>
 		</div>
+		<v-playbar v-show="playBar"></v-playbar>
 	<!--公用组件-->
 	<v-sidebar></v-sidebar>
 	<v-toast v-show="showToast"></v-toast>
+	<transition name="fold">
+		<v-play v-show="showPlay"></v-play>
+	</transition>
 	</div>
 
 </template>
@@ -17,24 +21,32 @@
 import header from './components/header'
 import sidebar from './components/sidebar'
 import toast from './components/toast'
-
+import loading from './components/loading'
+import playbar from '@/components/playbar'
+import play from '@/components/play'
 import {mapGetters} from 'vuex'
-import api from './api'
 export default {
 	name: 'app',
 	components: {
 		'v-header': header,
 		'v-sidebar':sidebar,
-		'v-toast':toast
+		'v-toast':toast,
+		'v-loading':loading,
+		'v-playbar':playbar,
+		'v-play':play
 	},
 	data() {
 		return {
 		}
 	},
 	computed:{
+		playBar(){
+			return true
+		},
 		...mapGetters([
 			'showSidebar',
-			'showToast'
+			'showToast',
+			'showPlay'
 		]),
 	transitionName(){
 		switch(this.$route.path){
@@ -52,12 +64,13 @@ export default {
 @import './assets/css/function';
 
 @font-face {
-  font-family: 'iconfont';  /* project id 369220 */
-  src: url('//at.alicdn.com/t/font_r03k61pzg7dgqfr.eot');
-  src: url('//at.alicdn.com/t/font_r03k61pzg7dgqfr.eot?#iefix') format('embedded-opentype'),
-  url('//at.alicdn.com/t/font_r03k61pzg7dgqfr.woff') format('woff'),
-  url('//at.alicdn.com/t/font_r03k61pzg7dgqfr.ttf') format('truetype'),
-  url('//at.alicdn.com/t/font_r03k61pzg7dgqfr.svg#iconfont') format('svg');
+	font-family: 'icon';
+	/* project id 277165 */
+	src: url('//at.alicdn.com/t/font_kmywdojzhchj8aor.eot');
+	src: url('//at.alicdn.com/t/font_kmywdojzhchj8aor.eot?#iefix') format('embedded-opentype'),
+	url('//at.alicdn.com/t/font_kmywdojzhchj8aor.woff') format('woff'),
+	url('//at.alicdn.com/t/font_kmywdojzhchj8aor.ttf') format('truetype'),
+	url('//at.alicdn.com/t/font_kmywdojzhchj8aor.svg#iconfont') format('svg');
 }
 
 .icon {
@@ -74,6 +87,30 @@ export default {
 	display: flex;
 	flex-direction: column;
 	height: 100%;
-	background: rgba(255, 255, 255, 1);
+	background: rgba(8, 5, 58, 0.9);
+	.play-loading {
+		top: 8rem;
+		z-index: 99;
+	}
+	.container {
+		flex: 1;
+		overflow: auto;
+		overflow-x: hidden;
+	}
+	.slide-left-enter-active {
+		animation: slideLeft .3s;
+	}
+	.slide-right-enter-active {
+		animation: slideRight .3s;
+	}
+
+	.fold-enter-active,
+	.fold-leave-active {
+		transition: transform .3s ease-in;
+	}
+	.fold-enter,
+	.fold-leave-active {
+		transform: translate3d(0, 100%, 0);
+	}
 }
 </style>
