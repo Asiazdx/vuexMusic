@@ -8,6 +8,7 @@ Vue.config.productionTip = false
 
 import '../static/css/reset.scss'
 
+//vue-touch是实现移动端左侧导航的
 var VueTouch = require('vue-touch')
 Vue.use(VueTouch, {name: 'v-touch'})
 
